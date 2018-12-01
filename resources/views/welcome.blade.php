@@ -10,16 +10,13 @@
 @section('content')
     <div class="jumbotron well-lg">
         <h2><a href="{{ url('/') }}">Teacher Module Management System</a></h2>
-
         <div class="more_links">
             <li><a href="{{ url('lecturer_details') }}">View Lecturer's Detail</a></li>
         </div><!--/.more_links-->
     </div><!--/.jumbotron-->
     <div class="col-md-4 col-md-offset-4 add_form">
         <h4>Lecturer Adding Form</h4>
-
         <div class="container">
-
             <div class="row">
                 @if(session('success'))
                     <div class="alert alert-success">
@@ -34,7 +31,6 @@
             </div>
 
         </div>
-
         <form method="POST" action="{{ url('Lecturer') }}" role="form">
             {{ csrf_field() }}
             <div class="form-group">
