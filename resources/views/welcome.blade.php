@@ -26,9 +26,8 @@
     <div class="col-md-4 col-md-offset-4 add_form">
         <h4>Lecturer Adding Form</h4>
 
-        <div class="container">
-
-            <div class="row">
+        <div>
+            <div>
                 @if(session('success'))
                     <div class="alert alert-success">
                         {{ session('success') }}
@@ -47,7 +46,7 @@
             {{ csrf_field() }}
             <div class="form-group">
                 <label for="lecturer">Lecturer's Name :</label>
-                <input class="form-control" id="lecturer" placeholder="Enter lecturer's Full name here" name="lecturer" type="text" required>
+                <input class="form-control" id="lecturer" placeholder="Enter lecturer's Full name here" name="lecturer_name" type="text" required>
                   <div id="lecturer"></div>
                 @if($errors->has('lecturer_name'))
                     <span class="help-block">

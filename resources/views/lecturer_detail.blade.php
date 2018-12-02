@@ -23,8 +23,8 @@
     <div class="col-md-10 col-md-offset-1 data_table">
         <h4>List of registered lecturers</h4>
 
-        <div class="container">
-            <div class="row">
+        <div>
+            <div>
                 @if(session('success'))
                     <div class="alert alert-success">
                         {{ session('success') }}
@@ -43,7 +43,7 @@
             <a href="{{ url('/generate_csv') }}" class="btn btn-default" title="generate all data into csv file">Generate .CSV</a>
         </div><!--/.csv_btn-->
         <br/>
-        <div class="table-responsive">
+        <div>
             <table class="table table-striped table-bordered" width="100%" id="myTable">
 
                 <thead>

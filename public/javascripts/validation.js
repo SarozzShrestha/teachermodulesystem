@@ -1,7 +1,7 @@
 $().ready(function () {
     $("#form").validate({
         rules: {
-            lecturer: {
+            lecturer_name: {
                 required: true,
                 minlength: 5
             },
@@ -17,7 +17,7 @@ $().ready(function () {
             }
         },
         messages: {
-            lecturer: {
+            lecturer_name: {
               required: "Please enter lecturer name",
               minlength: "Lecturer Name must contain at least 4 words"
             },

@@ -76,7 +76,7 @@ class LecturerController extends Controller
         }
 
         $lecturer->save();
-        return view('lecturer_detail')->with('success', 'Lecturer Information Added Successfully');
+        return redirect('/')->with('success', 'Lecturer Information Added Successfully');
     }
 
     /**
