@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Response;
+use App\Faculty;
+use App\Lecturer;
+use App\Module;
 
 class LecturerController extends Controller
 {
@@ -144,5 +149,14 @@ class LecturerController extends Controller
         };
 
         return Response::download($callback, 200, $headers);
+    }
+
+    public function modules()
+    {
+        $facultyid = Input::get('id');
+
+        $modules = Module::where('faculty_id', '=', $facultyid)->get();
+
+        return response()->json($modules);
     }
 }

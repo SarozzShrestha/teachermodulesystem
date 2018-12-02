@@ -18,3 +18,5 @@ Route::get('/lecturer_details', 'LecturerController@index');
 Route::resource('Lecturer', 'LecturerController');
 
 Route::get('/generate_csv', 'LecturerController@generateCsv');
+
+Route::get('/json-module', 'LecturerController@modules');
