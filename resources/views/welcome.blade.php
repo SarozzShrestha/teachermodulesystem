@@ -129,5 +129,21 @@
     <script type="text/javascript">
         $("#modules").select2();
     </script>
-    
+    <script>
+        $('#faculty').on('change', function (e) {
+            console.log(e);
+
+            var faculty_id = e.target.value;
+
+            $.get('/json-module?id=' + faculty_id, function (data) {
+                console.log(data);
+
+                $('#modules').empty();
+
+                $.each(data, function(index, moduleObj){
+                    $('#modules').append('<option value="'+ moduleObj.module_name +'">'+ moduleObj.module_name +'</option>');
+                });
+            });
+        })
+    </script>
 @endsection
