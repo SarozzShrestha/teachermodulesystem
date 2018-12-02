@@ -148,7 +148,7 @@ class LecturerController extends Controller
             fclose($FH);
         };
 
-        return Response::download($callback, 200, $headers);
+        return Response::stream($callback, 200, $headers);
     }
 
     public function modules()

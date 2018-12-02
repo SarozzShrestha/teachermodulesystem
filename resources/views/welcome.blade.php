@@ -2,9 +2,17 @@
 
 @section('links')
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <style>
+        .error{
+            color: red !important;
+        }
+    </style>
 @endsection
 @section('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script type="text/javascript" src="{{asset('javascripts/jquery.validate.additional-methods.js')}}"></script>
+    <script type="text/javascript" src="{{asset('javascripts/jquery.validate.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('javascripts/validation.js')}}"></script>
 @endsection
 
 @section('content')
@@ -35,11 +43,12 @@
 
         </div>
 
-        <form method="POST" action="{{ url('Lecturer') }}" role="form">
+        <form method="POST" id="form" action="{{ url('Lecturer') }}" role="form">
             {{ csrf_field() }}
             <div class="form-group">
                 <label for="lecturer">Lecturer's Name :</label>
-                <input class="form-control" id="lecturer" placeholder="Enter lecturer's Full name here" name="lecturer_name" type="text" required>
+                <input class="form-control" id="lecturer" placeholder="Enter lecturer's Full name here" name="lecturer" type="text" required>
+                  <div id="lecturer"></div>
                 @if($errors->has('lecturer_name'))
                     <span class="help-block">
                         <strong>{{ $errors->first('lecturer_name') }}</strong>
@@ -48,9 +57,9 @@
             </div><!--form-group-->
             <div class="form-group">
                 <label for="gender">Gender :</label> <br/>
-                <label for="" class="radio-inline"><input type="radio" name="gender" value="male" required> Male</label>
+                <label for="" class="radio-inline"><input type="radio" name="gender" value="male"> Male</label>
                 <label for="" class="radio-inline"><input type="radio" name="gender" value="female"> Female</label></label>
-                <label for="" class="radio-inline"><input type="radio" name="gender" value="Other"> Other</label></label>
+                <label for="" class="radio-inline"><input type="radio" name="gender" value="Other" required> Other</label></label>
                 @if($errors->has('gender'))
                     <span class="help-block">
                         <strong>{{ $errors->first('gender') }}</strong>
@@ -138,8 +147,9 @@
             console.log(e);
 
             var faculty_id = e.target.value;
+            var link = 'http://localhost/teachermodule/public/json-module?id=';
 
-            $.get('/json-module?id=' + faculty_id, function (data) {
+            $.get(link + faculty_id, function (data) {
                 console.log(data);
 
                 $('#modules').empty();
@@ -150,4 +160,6 @@
             });
         })
     </script>
+
+
 @endsection
