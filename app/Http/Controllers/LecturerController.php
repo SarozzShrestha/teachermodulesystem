@@ -18,9 +18,9 @@ class LecturerController extends Controller
      */
     public function index()
     {
-      $lecturers = Lecturer::all();
+        $lecturers = Lecturer::all();
 
-      return view('lecturer_detail', ['lecturers' => $lecturers]);
+        return view('lecturer_detail', ['lecturers' => $lecturers]);
     }
 
     /**
@@ -30,9 +30,9 @@ class LecturerController extends Controller
      */
     public function create()
     {
-      $faculties = Faculty::all();
+        $faculties = Faculty::all();
 
-      return view('welcome', ['faculties' => $faculties]);
+        return view('welcome', ['faculties' => $faculties]);
     }
 
     /**
@@ -43,40 +43,40 @@ class LecturerController extends Controller
      */
     public function store(Request $request)
     {
-      //data validation
-      $request->validate([
-          'lecturer_name' => 'required',
-          'gender' => 'required',
-          'phone' => 'required',
-          'email' => 'required|email',
-          'address' => 'required',
-          'nationality' => 'required',
-          'dob' => 'required|date',
-          'faculty' => 'required',
-          'modules' => 'required'
-      ]);
+        //data validation
+        $request->validate([
+            'lecturer_name' => 'required',
+            'gender' => 'required',
+            'phone' => 'required',
+            'email' => 'required|email',
+            'address' => 'required',
+            'nationality' => 'required',
+            'dob' => 'required|date',
+            'faculty' => 'required',
+            'modules' => 'required'
+        ]);
 
-      $lecturer = new Lecturer();
-      $lecturer->name = $request->input('lecturer_name');
-      $lecturer->gender = $request->input('gender');
-      $lecturer->phone = $request->input('phone');
-      $lecturer->email = $request->input('email');
-      $lecturer->address = $request->input('address');
-      $lecturer->nationality = $request->input('nationality');
-      $lecturer->dob = $request->input('dob');
-      $lecturer->faculty = $request->input('faculty');
-      if (!empty($request->input('modules')))
-      {
-          $modules = $request->input('modules');
-          foreach($modules as $module)
-          {
-              $module_array[] = $module;
-          }
-          $lecturer->module = implode('|', $module_array);
-      }
+        $lecturer = new Lecturer();
+        $lecturer->name = $request->input('lecturer_name');
+        $lecturer->gender = $request->input('gender');
+        $lecturer->phone = $request->input('phone');
+        $lecturer->email = $request->input('email');
+        $lecturer->address = $request->input('address');
+        $lecturer->nationality = $request->input('nationality');
+        $lecturer->dob = $request->input('dob');
+        $lecturer->faculty = $request->input('faculty');
+        if (!empty($request->input('modules')))
+        {
+            $modules = $request->input('modules');
+            foreach($modules as $module)
+            {
+                $module_array[] = $module;
+            }
+            $lecturer->module = implode('|', $module_array);
+        }
 
-      $lecturer->save();
-      return view('lecturer_detail')->with('success', 'Lecturer Information Added Successfully');
+        $lecturer->save();
+        return view('lecturer_detail')->with('success', 'Lecturer Information Added Successfully');
     }
 
     /**
